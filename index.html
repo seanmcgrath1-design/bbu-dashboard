@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BBU Dashboard — 7/8/26 1:29 PM</title>
+<title>BBU Dashboard — 7/8/26 1:36 PM</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Segoe UI", system-ui, sans-serif; background: #0f1117; color: #e2e8f0; min-height: 100vh; }
@@ -43,6 +43,9 @@
   .kpi.kpi-integ .kpi-value { color: #93c47d; }
   .kpi.kpi-harvest .kpi-value { color: #f6ad55; }
   .kpi.kpi-avail   .kpi-value { color: #76e4f7; }
+  .kpi.kpi-clickable { cursor: pointer; transition: border-color .15s, background .15s; }
+  .kpi.kpi-clickable:hover { border-color: #4a90e2; background: #1e2740; }
+  .kpi-link-hint { font-size: 9px; color: #4a5568; vertical-align: super; }
 
   /* ── Type breakdown bar ───────────────────────────────── */
   .type-bar {
@@ -221,7 +224,7 @@
       <h1>BBU / Baseband Dashboard</h1>
       <p>6672 Plan Tracker — live read from Google Sheets</p>
     </div>
-    <span class="header-badge" id="updatedBadge">Updated 7/8/26 1:29 PM</span>
+    <span class="header-badge" id="updatedBadge">Updated 7/8/26 1:36 PM</span>
   </div>
 
   <!-- Tab nav -->
@@ -417,12 +420,13 @@ function renderKpis() {
     { label: 'Integrated',    value: SUMMARY.integrated,  sub: 'BB Integration Compl.', cls: 'kpi-integ' },
     { label: 'Live / In Svc', value: SUMMARY.live,        sub: 'Inservice activation',  cls: 'kpi-live' },
     { label: 'Standalone',    value: SUMMARY.standalone,  sub: 'standalone units',      cls: '' },
-    { label: 'Harvest Watch',   value: SUMMARY.harvest_candidates,   sub: `BBU Installed · >${HARVEST_WARN_DAYS}d to CX/Splice`, cls: 'kpi-harvest' },
-    { label: 'Available BBUs',  value: SUMMARY.available_candidates, sub: `Not Installed · >${AVAIL_WARN_DAYS}d to CX/Splice`,    cls: 'kpi-avail' },
+    { label: 'Harvest Watch',   value: SUMMARY.harvest_candidates,   sub: `BBU Installed · >${HARVEST_WARN_DAYS}d to CX/Splice`, cls: 'kpi-harvest', tab: 'harvest'   },
+    { label: 'Available BBUs',  value: SUMMARY.available_candidates, sub: `Not Installed · >${AVAIL_WARN_DAYS}d to CX/Splice`,    cls: 'kpi-avail',   tab: 'available' },
   ];
   r.innerHTML = kpis.map(k =>
-    `<div class="kpi ${k.cls}">
-       <div class="kpi-label">${k.label}</div>
+    `<div class="kpi ${k.cls}${k.tab ? ' kpi-clickable' : ''}"
+          ${k.tab ? `onclick="switchTab('${k.tab}')" title="View ${k.label}"` : ''}>
+       <div class="kpi-label">${k.label}${k.tab ? ' <span class="kpi-link-hint">↗</span>' : ''}</div>
        <div class="kpi-value">${k.value}</div>
        <div class="kpi-sub">${k.sub}</div>
      </div>`
