@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BBU Dashboard — 7/8/26 12:40 PM</title>
+<title>BBU Dashboard — 7/8/26 1:20 PM</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Segoe UI", system-ui, sans-serif; background: #0f1117; color: #e2e8f0; min-height: 100vh; }
@@ -220,7 +220,7 @@
       <h1>BBU / Baseband Dashboard</h1>
       <p>6672 Plan Tracker — live read from Google Sheets</p>
     </div>
-    <span class="header-badge" id="updatedBadge">Updated 7/8/26 12:40 PM</span>
+    <span class="header-badge" id="updatedBadge">Updated 7/8/26 1:20 PM</span>
   </div>
 
   <!-- Tab nav -->
@@ -382,7 +382,7 @@ function renderKpis() {
     { label: 'Integrated',    value: SUMMARY.integrated,  sub: 'BB Integration Compl.', cls: 'kpi-integ' },
     { label: 'Live / In Svc', value: SUMMARY.live,        sub: 'Inservice activation',  cls: 'kpi-live' },
     { label: 'Standalone',    value: SUMMARY.standalone,  sub: 'standalone units',      cls: '' },
-    { label: 'Harvest Watch', value: SUMMARY.harvest_candidates, sub: `>${HARVEST_WARN_DAYS}d to CX/Splice`, cls: 'kpi-harvest' },
+    { label: 'Harvest Watch', value: SUMMARY.harvest_candidates, sub: `BBU Installed · >${HARVEST_WARN_DAYS}d to CX/Splice`, cls: 'kpi-harvest' },
   ];
   r.innerHTML = kpis.map(k =>
     `<div class="kpi ${k.cls}">
