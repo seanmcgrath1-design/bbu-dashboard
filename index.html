@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BBU Dashboard — 7/10/26 11:47 AM</title>
+<title>BBU Dashboard — 7/10/26 11:56 AM</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Segoe UI", system-ui, sans-serif; background: #0f1117; color: #e2e8f0; min-height: 100vh; }
@@ -236,7 +236,7 @@
       <h1>BBU / Baseband Dashboard</h1>
       <p>6672 Plan Tracker — live read from Google Sheets</p>
     </div>
-    <span class="header-badge" id="updatedBadge">Updated 7/10/26 11:47 AM</span>
+    <span class="header-badge" id="updatedBadge">Updated 7/10/26 11:56 AM</span>
   </div>
 
   <!-- Tab nav -->
@@ -446,7 +446,7 @@ const BBU_DATA = [{"key": "E000000627", "type": "6672", "display": "E000000627",
 const SUMMARY  = {"total": 434, "released": 340, "installed": 344, "integrated": 341, "live": 275, "standalone": 68, "harvest_candidates": 1, "available_candidates": 6};
 const HARVEST_WARN_DAYS = 60;
 const AVAIL_WARN_DAYS   = 90;
-const RFDS_DATA         = {"error": "unknown action: rfdsData"};
+const RFDS_DATA         = {"findings": [], "checkedAt": "7/10/26 11:56 AM", "totalActive": 47908, "skippedShading": 0};
 
 // ─── KPI strip ───────────────────────────────────────────────────────────────
 function renderKpis() {
